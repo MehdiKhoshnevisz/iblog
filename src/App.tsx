@@ -1,7 +1,53 @@
+import Post from "./components/Post";
 import github from "./icons/github.svg";
 import linkedin from "./icons/linkedin.svg";
 
 function App() {
+  const posts = [
+    {
+      href: "/",
+      image: "https://picsum.photos/320/240",
+      title:
+        "This is a summary or intro of the blog post to show details open it",
+      date: "Dec 30, 2020",
+    },
+    {
+      href: "/",
+      image: "https://picsum.photos/320/240",
+      title:
+        "This is a summary or intro of the blog post to show details open it",
+      date: "Dec 30, 2020",
+    },
+    {
+      href: "/",
+      image: "https://picsum.photos/320/240",
+      title:
+        "This is a summary or intro of the blog post to show details open it",
+      date: "Dec 30, 2020",
+    },
+    {
+      href: "/",
+      image: "https://picsum.photos/320/240",
+      title:
+        "This is a summary or intro of the blog post to show details open it",
+      date: "Dec 30, 2020",
+    },
+    {
+      href: "/",
+      image: "https://picsum.photos/320/240",
+      title:
+        "This is a summary or intro of the blog post to show details open it",
+      date: "Dec 30, 2020",
+    },
+    {
+      href: "/",
+      image: "https://picsum.photos/320/240",
+      title:
+        "This is a summary or intro of the blog post to show details open it",
+      date: "Dec 30, 2020",
+    },
+  ];
+
   return (
     <main>
       <div className="min-h-[400px] flex justify-center items-center mt-20 mb-40">
@@ -36,84 +82,19 @@ function App() {
       </div>
 
       {/* posts */}
-
       <div className="max-w-4xl mx-auto mb-12">
         <div className="grid grid-cols-12 gap-8">
-          <a href="/" className="col-span-4">
-            <figure className="mb-1">
-              <img
-                src="https://picsum.photos/320/240"
-                width={320}
-                height={240}
-                alt="A descriptive image"
-                className="rounded-lg bg-slate-100"
+          {posts.map((post, index) => (
+            <div className="col-span-4">
+              <Post
+                key={index}
+                href={post.href}
+                image={post.image}
+                title={post.title}
+                date={post.date}
               />
-              <figcaption className="mt-1">
-                <span className="">Dec 30, 2020</span>
-                <p className="text-lg text-black font-bold leading-snug">
-                  This is a summary or intro of the blog post to show details
-                  open it
-                </p>
-              </figcaption>
-            </figure>
-          </a>
-
-          <a href="/" className="col-span-4">
-            <figure className="mb-1">
-              <img
-                src="https://picsum.photos/320/240"
-                width={320}
-                height={240}
-                alt="A descriptive image"
-                className="rounded-lg bg-slate-100"
-              />
-              <figcaption className="mt-1">
-                <span className="">Dec 30, 2020</span>
-                <p className="text-lg text-black font-bold leading-snug">
-                  This is a summary or intro of the blog post to show details
-                  open it
-                </p>
-              </figcaption>
-            </figure>
-          </a>
-
-          <a href="/" className="col-span-4">
-            <figure className="mb-1">
-              <img
-                src="https://picsum.photos/320/240"
-                width={320}
-                height={240}
-                alt="A descriptive image"
-                className="rounded-lg bg-slate-100"
-              />
-              <figcaption className="mt-1">
-                <span className="">Dec 30, 2020</span>
-                <p className="text-lg text-black font-bold leading-snug">
-                  This is a summary or intro of the blog post to show details
-                  open it
-                </p>
-              </figcaption>
-            </figure>
-          </a>
-
-          <a href="/" className="col-span-4">
-            <figure className="mb-1">
-              <img
-                src="https://picsum.photos/320/240"
-                width={320}
-                height={240}
-                alt="A descriptive image"
-                className="rounded-lg bg-slate-100"
-              />
-              <figcaption className="mt-1">
-                <span className="">Dec 30, 2020</span>
-                <p className="text-lg text-black font-bold leading-snug">
-                  This is a summary or intro of the blog post to show details
-                  open it
-                </p>
-              </figcaption>
-            </figure>
-          </a>
+            </div>
+          ))}
         </div>
       </div>
     </main>
