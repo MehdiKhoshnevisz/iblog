@@ -1,3 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Zen+Kaku+Gothic+Antique&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
+}
