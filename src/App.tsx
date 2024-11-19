@@ -1,3 +1,6 @@
+import github from "./icons/github.svg";
+import linkedin from "./icons/linkedin.svg";
+
 function App() {
   return (
     <main>
@@ -15,14 +18,14 @@ function App() {
           </p>
           <div className="flex justify-center gap-3 mt-8">
             <img
-              src="/icons/github.svg"
+              src={github}
               height={24}
               width={24}
               alt="github"
               className="cursor-pointer"
             />
             <img
-              src="/icons/linkedin.svg"
+              src={linkedin}
               height={24}
               width={24}
               alt="linkedin"
