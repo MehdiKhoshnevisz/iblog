@@ -4,8 +4,8 @@ import linkedin from "@/assets/icons/linkedin.svg";
 
 const Biography = () => {
   return (
-    <div className="min-h-[400px] flex justify-center items-center mt-20 mb-40">
-      <Container>
+    <Container className="my-40">
+      <section>
         <h1 className="text-6xl text-center font-black">
           Remote Front-End Developer from IRAN,Tehran.
         </h1>
@@ -32,8 +32,8 @@ const Biography = () => {
             className="rounded cursor-pointer"
           />
         </div>
-      </Container>
-    </div>
+      </section>
+    </Container>
   );
 };
 

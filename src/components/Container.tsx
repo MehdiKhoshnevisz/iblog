@@ -3,7 +3,7 @@ const Container = (props: {
   className?: string;
 }) => {
   const { children, className = "" } = props;
-  return <div className={`max-w-4xl mx-auto ${className}`}>{children}</div>;
+  return <div className={`max-w-3xl mx-auto ${className}`}>{children}</div>;
 };
 
 export default Container;
