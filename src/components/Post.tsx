@@ -18,7 +18,7 @@ const Post = (props: {
         />
         <figcaption className="mt-1">
           <span className="">{date}</span>
-          <h2 className="text-lg text-black font-bold leading-snug">{title}</h2>
+          <h3 className="text-lg text-black font-bold leading-snug">{title}</h3>
         </figcaption>
       </figure>
     </a>
