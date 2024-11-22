@@ -4,12 +4,12 @@ import linkedin from "@/assets/icons/linkedin.svg";
 
 const Biography = () => {
   return (
-    <Container className="my-40">
+    <Container className="my-24 md:my-40">
       <section>
-        <h1 className="text-6xl text-center font-black">
+        <h1 className="text-4xl md:text-6xl text-center font-black leading-snug md:leading-none">
           Remote Front-End Developer from IRAN,Tehran.
         </h1>
-        <p className="text-center mx-auto mt-8 text-xl text-slate-600 leading-snug">
+        <p className="text-center mx-auto mt-8 text-lg md:text-xl text-slate-600 leading-loose md:leading-snug">
           Hey, I’m <span className="font-black">Mehdi</span>-a front-end
           developer who loves creating interactive, visually stunning web
           experiences. From smooth animations to clean, functional designs, I’m

@@ -14,7 +14,7 @@ const Post = (props: {
           width={320}
           height={240}
           alt="A descriptive image"
-          className="rounded-lg bg-slate-100"
+          className="rounded-lg bg-slate-100 w-full lgj:w-auto"
         />
         <figcaption className="mt-1">
           <span className="">{date}</span>

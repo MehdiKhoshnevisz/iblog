@@ -6,12 +6,12 @@ export default function PostPage() {
 
   return (
     <main>
-      <Container className="my-40">
+      <Container className="my-20 md:my-40">
         <header className="mb-8">
-          <h1 className="text-5xl font-black">
+          <h1 className="text-3xl md:text-5xl font-black">
             What I learned as a product designer at Apple {id}.
           </h1>
-          <span className="block mt-6">Dec 20, 2023</span>
+          <span className="block mt-2 md:mt-6">Dec 20, 2023</span>
         </header>
 
         <article className="text-xl text-slate-900">

@@ -43,12 +43,12 @@ const Posts = () => {
 
   return (
     <Container>
-      <h2 className="text-center text-4xl text-slate-950 font-black mb-10">
+      <h2 className="text-center text-2xl md:text-4xl text-slate-950 font-black mb-10">
         What's going on?
       </h2>
-      <div className="grid grid-cols-12 gap-4">
+      <div className="grid grid-cols-12 sm:gap-4">
         {posts.map((post, index) => (
-          <div className="col-span-4">
+          <div className="col-span-12 sm:col-span-6 lg:col-span-4 mb-6 sm:mb-0">
             <Post
               key={index}
               href={`/post/${index + 1}`}
