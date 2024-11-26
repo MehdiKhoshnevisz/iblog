@@ -7,6 +7,7 @@ import Container from "@/components/Container";
 import Post from "@/components/Post";
 import GetPosts from "./posts.gql";
 import PostsSkeleton from "./Skeleton";
+import { useMemo } from "react";
 
 const Posts = () => {
   const variables = {
@@ -47,9 +48,10 @@ const Posts = () => {
 
   const posts = data?.posts?.nodes || [];
   const postsTotalCount = data?.posts?.totalCount;
-  const isInitialLoading = networkStatus === NetworkStatus.loading;
-
-  console.log({ networkStatus, NetworkStatus });
+  const isInitialLoading = useMemo(
+    () => networkStatus === NetworkStatus.loading,
+    [networkStatus]
+  );
 
   return (
     <Container>
@@ -62,13 +64,13 @@ const Posts = () => {
         ) : posts && posts?.length ? (
           posts.map((post: any) => (
             <motion.div
+              key={post.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
               className="col-span-12 sm:col-span-6 lg:col-span-4 mb-6 sm:mb-0"
             >
               <Post
-                key={post.id}
                 href={`/post/${post.id}`}
                 image={post?.customSeoDetail?.thumbnail?.url}
                 title={post.title}
