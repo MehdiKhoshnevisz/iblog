@@ -49,6 +49,8 @@ const Posts = () => {
   const postsTotalCount = data?.posts?.totalCount;
   const isInitialLoading = networkStatus === NetworkStatus.loading;
 
+  console.log({ networkStatus, NetworkStatus });
+
   return (
     <Container>
       <h2 className="text-center text-2xl md:text-4xl text-slate-950 font-black mb-10">
