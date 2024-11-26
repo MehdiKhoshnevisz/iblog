@@ -9,9 +9,10 @@ const Skeleton = (props: any) => {
     <>
       {list.map((item: any) => (
         <div
+          key={item}
           className={`col-span-12 sm:col-span-${count} lg:col-span-4 mb-6 sm:mb-0`}
         >
-          <Post key={item} isSkeleton />
+          <Post isSkeleton />
         </div>
       ))}
     </>
