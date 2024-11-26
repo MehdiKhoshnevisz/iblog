@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { gql, useQuery, NetworkStatus } from "@apollo/client";
 
 import spinner from "@/assets/icons/spinner.svg";
@@ -58,7 +59,12 @@ const Posts = () => {
           <PostsSkeleton />
         ) : posts && posts?.length ? (
           posts.map((post: any) => (
-            <div className="col-span-12 sm:col-span-6 lg:col-span-4 mb-6 sm:mb-0">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="col-span-12 sm:col-span-6 lg:col-span-4 mb-6 sm:mb-0"
+            >
               <Post
                 key={post.id}
                 href={`/post/${post.id}`}
@@ -66,7 +72,7 @@ const Posts = () => {
                 title={post.title}
                 date={post.createdAt}
               />
-            </div>
+            </motion.div>
           ))
         ) : (
           ""
