@@ -36,7 +36,7 @@ const Posts = () => {
   const handleLoadMore = () => {
     fetchMore({
       updateQuery(previousData, { fetchMoreResult }) {
-        return fetchMoreResult;
+        return { ...previousData, ...fetchMoreResult };
       },
       variables: {
         ...variables,
