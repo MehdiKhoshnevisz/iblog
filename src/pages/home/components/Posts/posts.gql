@@ -1,0 +1,179 @@
+query GetPosts(
+  $after: String
+  $before: String
+  $excludePins: Boolean
+  $filterBy: [PostListFilterByInput!]
+  $limit: Int!
+  $offset: Int
+  $orderBy: PostListOrderByEnum
+  $orderByString: String
+  $postTypeIds: [String!]
+  $reverse: Boolean
+  $spaceIds: [ID!]
+  $query: String
+) {
+  posts(
+    after: $after
+    before: $before
+    excludePins: $excludePins
+    filterBy: $filterBy
+    limit: $limit
+    offset: $offset
+    orderBy: $orderBy
+    orderByString: $orderByString
+    postTypeIds: $postTypeIds
+    reverse: $reverse
+    spaceIds: $spaceIds
+    query: $query
+  ) {
+    totalCount
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    nodes {
+      id
+      slug
+      mappingFields {
+        key
+        type
+        value
+      }
+      fields {
+        key
+        value
+        relationEntities {
+          __typename
+          medias {
+            __typename
+            ... on Emoji {
+              id
+              text
+            }
+            ... on File {
+              id
+              name
+              url
+              downloadUrl
+              extension
+              size
+              status
+            }
+            ... on Image {
+              id
+              url
+              width
+              height
+              cropX
+              cropY
+              cropWidth
+              cropHeight
+              cropZoom
+              dominantColorHex
+              dpi
+              urls {
+                full
+                large
+                medium
+                small
+                thumb
+              }
+            }
+          }
+          members {
+            id
+            displayName
+            username
+            email
+            profilePicture {
+              ... on Image {
+                id
+                url
+                width
+                height
+                dominantColorHex
+              }
+            }
+          }
+          posts {
+            id
+            slug
+            title
+            description
+            textContent
+            createdAt
+            updatedAt
+            reactionsCount
+          }
+          spaces {
+            id
+            name
+            slug
+            description
+            image {
+              ... on Image {
+                id
+                url
+                width
+                height
+              }
+            }
+          }
+        }
+      }
+      subscribersCount
+      reactionsCount
+      isAnonymous
+      isHidden
+      shortContent
+      createdAt
+      publishedAt
+      repliesCount
+      totalRepliesCount
+      title
+      description
+      textContent
+      thumbnail {
+        ... on Image {
+          id
+          url
+          width
+          height
+          dominantColorHex
+        }
+      }
+      embedIds
+      primaryReactionType
+      lastActivityAt
+      language
+      customSeoDetail {
+        description
+        noIndex
+        thumbnail {
+          ... on Image {
+            id
+            url
+            width
+            height
+          }
+        }
+      }
+      relativeUrl
+      url
+      space {
+        id
+        name
+        slug
+        description
+        image {
+          ... on Image {
+            id
+            url
+            width
+            height
+          }
+        }
+      }
+    }
+  }
+}

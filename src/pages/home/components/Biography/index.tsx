@@ -17,20 +17,18 @@ const Biography = () => {
           place!
         </p>
         <div className="flex justify-center gap-3 mt-8">
-          <img
-            src={github}
-            height={24}
-            width={24}
-            alt="github"
-            className="cursor-pointer"
-          />
-          <img
-            src={linkedin}
-            height={24}
-            width={24}
-            alt="linkedin"
-            className="rounded cursor-pointer"
-          />
+          <a href="https://github.com/MehdiKhoshnevisz" target="_blank">
+            <img src={github} height={24} width={24} alt="github" />
+          </a>
+          <a href="https://www.linkedin.com/in/mehdi-khoshnevisz/">
+            <img
+              src={linkedin}
+              height={24}
+              width={24}
+              alt="linkedin"
+              className="rounded"
+            />
+          </a>
         </div>
       </section>
     </Container>

@@ -1,0 +1,75 @@
+/* General article styling */
+.post-article {
+  line-height: 1.8;
+}
+
+/* Paragraphs */
+.post-article p {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+/* Links */
+.post-article a {
+  text-decoration: none;
+  color: #2563eb; /* Interactive */
+  font-weight: bold;
+}
+
+.post-article a:hover {
+  color: #1d4ed8; /* Interactive-hovered */
+  text-decoration: underline;
+}
+
+/* Headings */
+.post-article h2 {
+  font-size: 1.5rem;
+  color: #0f172a; /* Darker Slate */
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.post-article h3 {
+  font-size: 1.25rem;
+  color: #334155; /* Slightly lighter Slate */
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+/* Lists */
+.post-article ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  list-style: disc;
+}
+
+.post-article ul li {
+  margin-bottom: 0.5rem;
+}
+
+.post-article ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  list-style: decimal;
+}
+
+.post-article ol li {
+  margin-bottom: 0.5rem;
+}
+
+/* Emphasis */
+.post-article em {
+  font-style: italic;
+}
+
+/* Interactive buttons or highlights */
+.text-interactive {
+  color: #2563eb; /* Primary interactive color */
+  font-weight: bold;
+}
+
+.text-interactive:hover {
+  color: #1d4ed8;
+}
