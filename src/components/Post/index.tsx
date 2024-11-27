@@ -1,4 +1,5 @@
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 import Like from "@/components/Like";
 import useReaction from "@/hooks/use-reaction";
@@ -20,7 +21,7 @@ const Post = (props: PostProps) => {
   });
 
   return (
-    <a href={isSkeleton ? undefined : href}>
+    <Link to={isSkeleton ? "" : href}>
       <figure className="relative transition-all group">
         {!isSkeleton ? (
           <img
@@ -51,7 +52,7 @@ const Post = (props: PostProps) => {
           </>
         )}
       </figure>
-    </a>
+    </Link>
   );
 };
 
