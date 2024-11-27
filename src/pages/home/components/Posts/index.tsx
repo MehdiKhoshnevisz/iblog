@@ -13,6 +13,7 @@ import PostsSkeleton from "./Skeleton";
 import Container from "@/components/Container";
 
 import spinner from "@/assets/icons/spinner.svg";
+import Button from "@/components/Button";
 
 const Posts = () => {
   const variables = {
@@ -90,15 +91,7 @@ const Posts = () => {
           (isLoading ? (
             <img src={spinner} width={36} height={36} className="mx-auto" />
           ) : (
-            <>
-              {/* TODO: shoud be a component */}
-              <button
-                className="min-h-9 text-center px-4 py-2 text-slate-950 font-black bg-slate-100 hover:bg-slate-950 hover:text-slate-50 transition-all duration-300"
-                onClick={handleLoadMore}
-              >
-                I Want More...
-              </button>
-            </>
+            <Button onClick={handleLoadMore}>I Want More...</Button>
           ))}
       </div>
     </Container>

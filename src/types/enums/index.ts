@@ -9,3 +9,10 @@ export enum REACTION {
   HEART = "heart",
   OPEN_MOUTH = "open_mouth",
 }
+
+export enum BUTTON_COLOR {
+  error = "error",
+  default = "default",
+  primary = "primary",
+  success = "success",
+}
