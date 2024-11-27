@@ -1,6 +1,7 @@
+import moment from "moment";
+
 import heart from "@/assets/icons/heart.svg";
 import heartFill from "@/assets/icons/heart-fill.svg";
-import moment from "moment";
 import useReaction from "@/hooks/useReaction";
 
 const Post = (props: {

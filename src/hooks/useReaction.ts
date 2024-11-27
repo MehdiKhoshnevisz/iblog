@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
 
 import addReactionMutation from "@/graphql/addReactionMutation.gql";
@@ -30,7 +30,7 @@ const useReaction = ({ hasReactionBefore = false } = {}) => {
 
     setHasReaction(!hasReaction);
 
-    if (hasReactionBefore || !!hasReaction) {
+    if (hasReaction) {
       removeReactionRequest(id);
     } else {
       addReactionRequest(id);
@@ -73,6 +73,12 @@ const useReaction = ({ hasReactionBefore = false } = {}) => {
       console.error("Error removing reaction:", err);
     }
   };
+
+  useEffect(() => {
+    if (hasReactionBefore) {
+      setHasReaction(true);
+    }
+  }, [hasReactionBefore]);
 
   return {
     onReaction,
