@@ -2,7 +2,7 @@ import moment from "moment";
 import { useMemo } from "react";
 import { motion } from "motion/react";
 import parse from "html-react-parser";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { gql, useQuery } from "@apollo/client";
 
 import getPostQuery from "@/graphql/queries/get-post/index.gql";

@@ -1,5 +1,5 @@
 import moment from "moment";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 import Like from "@/components/Like";
 import useReaction from "@/hooks/use-reaction";
