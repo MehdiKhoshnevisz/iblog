@@ -42,14 +42,14 @@ export default function PostPage() {
 
   console.log({ post });
 
-  if (loading) return "";
+  if (loading) return <div className="min-h-screen"></div>;
 
   return (
     <motion.main
       initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: -10 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="my-20 md:my-40 min-h-full"
+      className="my-20 md:my-40"
     >
       <Container>
         <header className="mb-8">

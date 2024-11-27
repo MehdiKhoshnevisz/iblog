@@ -2,7 +2,6 @@ import { motion } from "motion/react";
 
 import Biography from "./components/Biography";
 import Posts from "./components/Posts";
-import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -14,7 +13,6 @@ export default function Home() {
     >
       <Biography />
       <Posts />
-      <Footer />
     </motion.main>
   );
 }
