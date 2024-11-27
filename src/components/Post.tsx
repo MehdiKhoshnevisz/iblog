@@ -51,7 +51,7 @@ const Post = (props: {
               </h3>
             </figcaption>
 
-            <div className="absolute bottom-4 px-4 opacity-0 group-hover:opacity-100 transition-opacity w-full">
+            <div className="absolute bottom-4 px-4 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity w-full">
               <Like isFill={hasReaction} onClick={(e) => onReaction(e, id)} />
             </div>
           </>
