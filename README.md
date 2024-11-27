@@ -1,50 +1,127 @@
-# React + TypeScript + Vite
+# React Apollo Client Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React-based frontend application using **Vite**, **TypeScript**, and **Apollo Client** to interact with a GraphQL API.
 
-Currently, two official plugins are available:
+## 🚀 Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Vite**: Fast and modern build tool for frontend development.
+- **React**: JavaScript library for building user interfaces.
+- **TypeScript**: Typed JavaScript for better maintainability and developer experience.
+- **Apollo Client**: State management and data fetching for GraphQL.
+- **Tailwind CSS** (Optional): Utility-first CSS framework for rapid UI development.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🌐 Live Demo
 
-- Configure the top-level `parserOptions` property like this:
+You can view the live version of this project at:  
+[https://mehdiblog.vercel.app/](https://mehdiblog.vercel.app/)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🛠️ Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd <repository-folder>
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2. Install Dependencies
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Ensure you have **Node.js** and **npm** or **yarn** installed on your machine.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+# Using npm
+npm install
+
+# Using yarn
+yarn install
 ```
+
+### 3. Create a `.env.local` File
+
+Create a `.env.local` file in the root of your project and add the following environment variables:
+
+```
+VITE_BASE_API=https://api.bettermode.com
+VITE_AUTH_TOKEN=your-auth-token-here
+```
+
+- **VITE_BASE_API**: The base URL for the API.
+- **VITE_AUTH_TOKEN**: Your API authentication token.
+
+### 4. Run the Development Server
+
+```bash
+# Using npm
+npm run dev
+
+# Using yarn
+yarn dev
+```
+
+This will start the development server at [http://localhost:3000](http://localhost:3000) (or another port if specified).
+
+### 5. Build for Production
+
+To create an optimized build for production:
+
+```bash
+# Using npm
+npm run build
+
+# Using yarn
+yarn build
+```
+
+The production-ready files will be generated in the `dist` folder.
+
+### 6. Preview Production Build
+
+To preview the production build locally:
+
+```bash
+# Using npm
+npm run preview
+
+# Using yarn
+yarn preview
+```
+
+---
+
+## 📂 Project Structure
+
+```bash
+.
+├── src
+│   ├── assets          # Project assets include icons
+│   ├── components      # React components
+│   ├── graphql         # GraphQL queries, mutations, and fragments
+│   ├── hooks           # Custom React hooks
+│   ├── pages           # Page components
+│   ├── services        # Services like apollo client
+│   ├── types           # Application types declrations and enums
+│   ├── App.tsx         # Main app component
+│   ├── global.css      # Global styles
+│   └── main.tsx        # Create app root
+├── public              # Public assets
+├── .env.local          # Environment variables
+├── package.json        # Project dependencies and scripts
+└── README.md           # Project documentation
+```
+
+---
+
+## 📝 Notes
+
+- Ensure that your **auth token** is kept secure and not exposed in any public repository.
+- If you encounter any issues, check your environment variables and API connectivity.
+
+---
+
+## 📧 Contact
+
+If you have any questions or need support, feel free to reach out to the project maintainers.
