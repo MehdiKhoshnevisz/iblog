@@ -1,4 +1,5 @@
 import moment from "moment";
+import { motion } from "motion/react";
 import parse from "html-react-parser";
 import { useParams } from "react-router-dom";
 
@@ -11,7 +12,7 @@ import "./post.css";
 
 export default function PostPage() {
   const { id } = useParams();
-  const { data } = useQuery(
+  const { data, loading } = useQuery(
     gql`
       ${GetPost}
     `,
@@ -30,9 +31,16 @@ export default function PostPage() {
       ? sanitizedContent?.slice(1, -1)
       : sanitizedContent;
 
+  if (loading) return "";
+
   return (
-    <main>
-      <Container className="my-20 md:my-40">
+    <motion.main
+      initial={{ opacity: 0, y: 0 }}
+      animate={{ opacity: 1, y: -10 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="my-20 md:my-40 min-h-full"
+    >
+      <Container>
         <header className="mb-8">
           <h1 className="text-3xl md:text-5xl font-black">{post?.title}</h1>
           <span className="block mt-2 md:mt-4">
@@ -50,6 +58,6 @@ export default function PostPage() {
           <span>Do you like it?</span>
         </div>
       </Container>
-    </main>
+    </motion.main>
   );
 }
