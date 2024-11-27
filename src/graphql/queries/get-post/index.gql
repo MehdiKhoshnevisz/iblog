@@ -1,0 +1,59 @@
+query GetPost($id: ID!) {
+  post(id: $id) {
+    __typename
+    ...PostFields
+
+    fields {
+      key
+      value
+      relationEntities {
+        members {
+          __typename
+          ...MemberFields
+        }
+        posts {
+          __typename
+          ...PostFields
+        }
+      }
+    }
+
+    customSeoDetail {
+      thumbnail {
+        ... on Image {
+          id
+          url
+          width
+          height
+        }
+      }
+    }
+  }
+}
+
+fragment MediaFields on Media {
+  ... on Image {
+    id
+    url
+    name
+    width
+    height
+  }
+}
+
+fragment MemberFields on Member {
+  id
+  name
+  email
+  displayName
+  profilePicture {
+    ...MediaFields
+  }
+}
+
+fragment PostFields on Post {
+  id
+  title
+  createdAt
+  reactionsCount
+}

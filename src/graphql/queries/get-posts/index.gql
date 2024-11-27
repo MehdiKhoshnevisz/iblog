@@ -1,0 +1,38 @@
+query GetPosts(
+  $limit: Int!
+  $offset: Int
+  $postTypeIds: [String!]
+  $reverse: Boolean
+  $spaceIds: [ID!]
+) {
+  posts(
+    limit: $limit
+    offset: $offset
+    postTypeIds: $postTypeIds
+    reverse: $reverse
+    spaceIds: $spaceIds
+  ) {
+    nodes {
+      id
+      url
+      title
+      createdAt
+      reactionsCount
+      customSeoDetail {
+        thumbnail {
+          ... on Image {
+            id
+            url
+            width
+            height
+          }
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    totalCount
+  }
+}

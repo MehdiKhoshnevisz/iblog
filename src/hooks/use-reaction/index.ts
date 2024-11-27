@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
 
-import addReactionMutation from "@/graphql/addReactionMutation.gql";
-import removeReactionMutation from "@/graphql/removeReactionMutation.gql";
+import type {
+  RemoveReactionResponse,
+  RemoveReactionVariables,
+} from "@/graphql/mutations/remove-reaction/types";
+import { REACTION, STATUS_RESPONSE } from "@/types/enums";
+import addReactionMutation from "@/graphql/mutations/add-reaction/index.gql";
+import removeReactionMutation from "@/graphql/mutations/remove-reaction/index.gql";
 
 interface useReactionProps {
   hasReactionBefore: boolean;
@@ -28,7 +33,9 @@ const useReaction = (props: useReactionProps) => {
       loading: removeReactionLoading,
       error: removeReactionError,
     },
-  ] = useMutation(removeReactionMutation);
+  ] = useMutation<RemoveReactionResponse, RemoveReactionVariables>(
+    removeReactionMutation
+  );
 
   const onReaction = (e: React.MouseEvent<EventTarget>, id: string) => {
     e.preventDefault();
@@ -48,13 +55,14 @@ const useReaction = (props: useReactionProps) => {
     try {
       const response = await addReaction({
         variables: {
-          input: { reaction: "heart" },
+          input: { reaction: REACTION.HEART },
           postId: id,
         },
       });
 
-      setHasReaction(true);
-      console.log("Reaction added:", response.data.addReaction.status);
+      if (response.data?.removeReaction?.status === STATUS_RESPONSE.SUCCESS) {
+        setHasReaction(true);
+      }
     } catch (err) {
       setHasReaction(false);
       console.error("Error adding reaction:", err);
@@ -67,13 +75,14 @@ const useReaction = (props: useReactionProps) => {
     try {
       const response = await removeReaction({
         variables: {
-          reaction: "heart",
+          reaction: REACTION.HEART,
           postId: id,
         },
       });
 
-      setHasReaction(false);
-      console.log("Reaction removed:", response.data.removeReaction.status);
+      if (response.data?.removeReaction.status === STATUS_RESPONSE.SUCCESS) {
+        setHasReaction(false);
+      }
     } catch (err) {
       console.error("Error removing reaction:", err);
     }

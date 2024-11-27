@@ -1,17 +1,11 @@
 import moment from "moment";
 
 import Like from "@/components/Like";
-import useReaction from "@/hooks/useReaction";
+import useReaction from "@/hooks/use-reaction";
 
-const Post = (props: {
-  id?: string;
-  title?: string;
-  href?: string;
-  date?: string;
-  image?: string;
-  isLiked?: boolean;
-  isSkeleton?: boolean;
-}) => {
+import { PostProps } from "./types";
+
+const Post = (props: PostProps) => {
   const {
     id = "",
     title = "",

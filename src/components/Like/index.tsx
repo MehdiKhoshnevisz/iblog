@@ -1,11 +1,9 @@
 import heart from "@/assets/icons/heart.svg";
 import heartFill from "@/assets/icons/heart-fill.svg";
 
-const Like = (props: {
-  withBg?: boolean;
-  isFill: boolean;
-  onClick: (e: React.MouseEvent<EventTarget>) => void;
-}) => {
+import { LikeProps } from "./types";
+
+const Like = (props: LikeProps) => {
   const { withBg = true, isFill = false, onClick = () => {} } = props;
 
   return (
