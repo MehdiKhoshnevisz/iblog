@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { motion } from "motion/react";
 import { gql, useQuery, NetworkStatus } from "@apollo/client";
 
@@ -47,11 +46,8 @@ const Posts = () => {
   };
 
   const posts = data?.posts?.nodes || [];
-  const postsTotalCount = data?.posts?.totalCount;
-  const isInitialLoading = useMemo(
-    () => networkStatus === NetworkStatus.loading,
-    [networkStatus]
-  );
+  const postsHasNextPage = data?.posts?.pageInfo?.hasNextPage;
+  const isInitialLoading = networkStatus === NetworkStatus.loading;
 
   return (
     <Container>
@@ -85,7 +81,7 @@ const Posts = () => {
         )}
       </div>
       <div className="text-center my-6 sm:my-12">
-        {posts?.length < postsTotalCount &&
+        {postsHasNextPage &&
           (isLoading ? (
             <img src={spinner} width={36} height={36} className="mx-auto" />
           ) : (

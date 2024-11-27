@@ -1,21 +1,13 @@
 query GetPost($id: ID!) {
   post(id: $id) {
     id
-    slug
-    mappingFields {
-      key
-      type
-      value
-    }
+    url
+    relativeUrl
     fields {
       key
       value
       relationEntities {
         __typename
-        medias {
-          __typename
-          ...MediaFields
-        }
         members {
           __typename
           ...MemberFields
@@ -24,54 +16,19 @@ query GetPost($id: ID!) {
           __typename
           ...PostFields
         }
-        tags {
-          __typename
-          description
-          id
-          slug
-          spaceId
-          title
-        }
       }
     }
-    subscribersCount
-    postTypeId
     reactionsCount
     createdAt
     publishedAt
     ownerId
-    createdById
     status
     spaceId
-    imageIds
-    pinnedInto
-    repliesCount
-    totalRepliesCount
-    locked
-    repliedToIds
-    repliedToId
     title
     description
-    shortcuts {
-      __typename
-      appId
-      description
-      favicon {
-        __typename
-        ...MediaFields
-      }
-      faviconId
-      key
-      name
-    }
     thumbnail {
       ...MediaFields
     }
-    embedIds
-    mentionedMembers
-    primaryReactionType
-    lastActivityAt
-    language
     customSeoDetail {
       description
       noIndex
@@ -87,8 +44,6 @@ query GetPost($id: ID!) {
       title
       canonicalUrl
     }
-    relativeUrl
-    url
   }
 }
 
@@ -111,18 +66,10 @@ fragment MediaFields on Media {
   }
   ... on Image {
     __typename
-    cropHeight
-    cropWidth
-    cropX
-    cropY
-    cropZoom
-    dominantColorHex
     downloadUrl
-    dpi
     height
     id
     name
-    status
     url
     urls {
       __typename
@@ -137,91 +84,34 @@ fragment MediaFields on Media {
 }
 
 fragment MemberFields on Member {
-  bannerId
-  blockedMemberIds
   createdAt
   displayName
   email
-  emailStatus
-  externalId
-  externalUrl
-  flagged
   id
-  lastSeen
-  lastSeenAt
-  locale
   name
-  networkId
-  newEmail
-  overrideTeammate
   profilePicture {
     ...MediaFields
   }
   profilePictureId
   relativeUrl
   roleId
-  score
-  staffReasons
-  status
-  subscribersCount
-  tagline
-  teammate
-  timeZone
-  updatedAt
   url
   username
   verifiedAt
 }
 
 fragment PostFields on Post {
-  allowedEmojis
-  allowedReactions
-  attachmentIds
+  id
+  url
+  title
   createdAt
   createdById
   description
-  embedIds
-  externalId
-  externalUrl
-  followersCount
-  forbiddenEmojis
-  forbiddenReactions
-  hasMoreContent
-  id
-  imageIds
-  isAnonymous
-  isHidden
-  language
-  lastActivityAt
-  locked
-  mentionedMembers
-  negativeReactions
-  negativeReactionsCount
-  networkId
   ownerId
-  pinnedInto
-  positiveReactions
-  positiveReactionsCount
-  postTypeId
-  primaryReactionType
   publishedAt
   reactionsCount
   relativeUrl
-  repliedToId
-  repliedToIds
-  repliesCount
-  shortContent
-  singleChoiceReactions
-  slug
   spaceId
   status
-  subscribersCount
-  tagIds
   textContent
-  thumbnailId
-  title
-  topicIds
-  totalRepliesCount
-  updatedAt
-  url
 }
