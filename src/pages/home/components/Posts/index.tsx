@@ -1,13 +1,13 @@
+import { useMemo } from "react";
 import { motion } from "motion/react";
 import { gql, useQuery, NetworkStatus } from "@apollo/client";
 
-import spinner from "@/assets/icons/spinner.svg";
-
-import Container from "@/components/Container";
 import Post from "@/components/Post";
-import GetPosts from "./posts.gql";
 import PostsSkeleton from "./Skeleton";
-import { useMemo } from "react";
+import Container from "@/components/Container";
+import getPostsQuery from "@/graphql/getPostsQuery.gql";
+
+import spinner from "@/assets/icons/spinner.svg";
 
 const Posts = () => {
   const variables = {
@@ -26,7 +26,7 @@ const Posts = () => {
     networkStatus,
   } = useQuery(
     gql`
-      ${GetPosts}
+      ${getPostsQuery}
     `,
     {
       variables,
@@ -71,10 +71,12 @@ const Posts = () => {
               className="col-span-12 sm:col-span-6 lg:col-span-4 mb-6 sm:mb-0"
             >
               <Post
+                id={post.id}
                 href={`/post/${post.id}`}
                 image={post?.customSeoDetail?.thumbnail?.url}
                 title={post.title}
                 date={post.createdAt}
+                isLiked={!!post.reactionsCount}
               />
             </motion.div>
           ))

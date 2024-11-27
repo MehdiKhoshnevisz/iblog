@@ -2,11 +2,10 @@ import moment from "moment";
 import { motion } from "motion/react";
 import parse from "html-react-parser";
 import { useParams } from "react-router-dom";
-
 import { gql, useQuery } from "@apollo/client";
-import Container from "@/components/Container";
 
-import GetPost from "./post.gql";
+import Container from "@/components/Container";
+import getPostQuery from "@/graphql/getPostQuery.gql";
 
 import "./post.css";
 
@@ -14,7 +13,7 @@ export default function PostPage() {
   const { id } = useParams();
   const { data, loading } = useQuery(
     gql`
-      ${GetPost}
+      ${getPostQuery}
     `,
     {
       variables: {

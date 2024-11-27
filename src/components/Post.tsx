@@ -1,23 +1,29 @@
 import heart from "@/assets/icons/heart.svg";
 import heartFill from "@/assets/icons/heart-fill.svg";
 import moment from "moment";
-import useLike from "@/hooks/useLike";
+import useReaction from "@/hooks/useReaction";
 
 const Post = (props: {
+  id?: string;
   title?: string;
   href?: string;
   date?: string;
   image?: string;
+  isLiked?: boolean;
   isSkeleton?: boolean;
 }) => {
   const {
+    id = "",
     title = "",
     href = "/",
     date = "",
     image = "",
+    isLiked = false,
     isSkeleton = false,
   } = props;
-  const { isLiked, onLike } = useLike();
+  const { hasReaction, onReaction } = useReaction({
+    hasReactionBefore: isLiked,
+  });
 
   return (
     <a href={isSkeleton ? undefined : href}>
@@ -50,9 +56,13 @@ const Post = (props: {
                 className={`${
                   isLiked ? "text-red-500" : "text-slate-900"
                 }  rounded-full bg-white w-9 h-9 flex justify-center items-center pt-0.5`}
-                onClick={onLike}
+                onClick={(e) => onReaction(e, id)}
               >
-                <img src={isLiked ? heartFill : heart} width={20} height={20} />
+                <img
+                  src={hasReaction ? heartFill : heart}
+                  width={20}
+                  height={20}
+                />
               </span>
             </div>
           </>
