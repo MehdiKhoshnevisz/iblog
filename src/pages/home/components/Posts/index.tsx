@@ -10,10 +10,10 @@ import getPostsQuery from "@/graphql/queries/get-posts/index.gql";
 
 import Post from "@/components/Post";
 import PostsSkeleton from "./Skeleton";
+import Button from "@/components/Button";
 import Container from "@/components/Container";
 
 import spinner from "@/assets/icons/spinner.svg";
-import Button from "@/components/Button";
 
 const Posts = () => {
   const variables = {
