@@ -76,7 +76,12 @@ query GetPost($id: ID!) {
       description
       noIndex
       thumbnail {
-        ...MediaFields
+        ... on Image {
+          id
+          url
+          width
+          height
+        }
       }
       thumbnailId
       title

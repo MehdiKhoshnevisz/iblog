@@ -1,7 +1,6 @@
 import moment from "moment";
 
-import heart from "@/assets/icons/heart.svg";
-import heartFill from "@/assets/icons/heart-fill.svg";
+import Like from "@/components/Like";
 import useReaction from "@/hooks/useReaction";
 
 const Post = (props: {
@@ -53,18 +52,7 @@ const Post = (props: {
             </figcaption>
 
             <div className="absolute bottom-4 px-4 opacity-0 group-hover:opacity-100 transition-opacity w-full">
-              <span
-                className={`${
-                  isLiked ? "text-red-500" : "text-slate-900"
-                }  rounded-full bg-white w-9 h-9 flex justify-center items-center pt-0.5`}
-                onClick={(e) => onReaction(e, id)}
-              >
-                <img
-                  src={hasReaction ? heartFill : heart}
-                  width={20}
-                  height={20}
-                />
-              </span>
+              <Like isFill={hasReaction} onClick={(e) => onReaction(e, id)} />
             </div>
           </>
         )}

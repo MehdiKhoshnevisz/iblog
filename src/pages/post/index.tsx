@@ -5,12 +5,10 @@ import parse from "html-react-parser";
 import { useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 
+import Like from "@/components/Like";
 import useReaction from "@/hooks/useReaction";
 import Container from "@/components/Container";
 import getPostQuery from "@/graphql/getPostQuery.gql";
-
-import heart from "@/assets/icons/heart.svg";
-import heartFill from "@/assets/icons/heart-fill.svg";
 
 import "./post.css";
 
@@ -42,6 +40,8 @@ export default function PostPage() {
       ? sanitizedContent?.slice(1, -1)
       : sanitizedContent;
 
+  console.log({ post });
+
   if (loading) return "";
 
   return (
@@ -59,23 +59,35 @@ export default function PostPage() {
           </span>
         </header>
 
+        <div className="mb-6">
+          <img
+            src={post?.customSeoDetail?.thumbnail?.url}
+            height={320}
+            className="w-full h-80 object-cover"
+          />
+        </div>
+
+        <hr className="mb-4" />
+
+        <div className="flex rounded-sm items-center px-4 py-6 mb-6 bg-[url('/public/like-pattern-bw.jpg')] bg-white/85 bg-blend-overlay bg-center">
+          <span
+            className="text-xl text-slate-600 cursor-pointer"
+            onClick={(e) => onReaction(e, post?.id)}
+          >
+            {hasReaction ? "I like it" : "Do you like it?"}
+          </span>
+          <Like
+            withBg={false}
+            isFill={hasReaction}
+            onClick={(e) => onReaction(e, post?.id)}
+          />
+        </div>
+
+        <hr className="mb-4" />
+
         <article className="post-article text-xl text-slate-900">
           {parse(`${cleanedContent}`)}
         </article>
-
-        <hr />
-
-        <div className="sticky rounded-md flex gap-4 bottom-1 mt-6 py-4 px-4 backdrop-blur-sm">
-          <span className="text-lg font-bold">Do you like it? </span>
-          <span
-            className={`${
-              isLiked ? "text-red-500" : "text-slate-900"
-            } cursor-pointer rounded-full bg-gray-100 w-9 h-9 flex justify-center items-center pt-0.5`}
-            onClick={(e) => onReaction(e, post?.id)}
-          >
-            <img src={hasReaction ? heartFill : heart} width={20} height={20} />
-          </span>
-        </div>
       </Container>
     </motion.main>
   );
