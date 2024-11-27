@@ -4,7 +4,12 @@ import { useMutation } from "@apollo/client";
 import addReactionMutation from "@/graphql/addReactionMutation.gql";
 import removeReactionMutation from "@/graphql/removeReactionMutation.gql";
 
-const useReaction = ({ hasReactionBefore = false } = {}) => {
+interface useReactionProps {
+  hasReactionBefore: boolean;
+}
+
+const useReaction = (props: useReactionProps) => {
+  const { hasReactionBefore } = props;
   const [hasReaction, setHasReaction] = useState(hasReactionBefore);
 
   const [
