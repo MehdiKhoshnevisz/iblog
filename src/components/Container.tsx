@@ -4,7 +4,7 @@ const Container = (props: {
 }) => {
   const { children, className = "" } = props;
   return (
-    <div className={`max-w-4xl mx-auto px-6 lg:px-0 ${className}`}>
+    <div className={`max-w-4xl mx-auto px-3 lg:px-0 ${className}`}>
       {children}
     </div>
   );

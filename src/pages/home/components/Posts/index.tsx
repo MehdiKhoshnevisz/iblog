@@ -68,7 +68,7 @@ const Posts = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="col-span-12 sm:col-span-6 lg:col-span-4 mb-6 sm:mb-0"
+              className="col-span-12 sm:col-span-6 lg:col-span-4 mb-2 sm:mb-0"
             >
               <Post
                 id={post.id}
@@ -84,13 +84,13 @@ const Posts = () => {
           ""
         )}
       </div>
-      <div className="text-center my-12">
+      <div className="text-center my-6 sm:my-12">
         {posts?.length < postsTotalCount &&
           (isLoading ? (
             <img src={spinner} width={36} height={36} className="mx-auto" />
           ) : (
             <button
-              className="min-h-9 rounded-lg text-center px-4 py-2 text-slate-950 font-black bg-slate-100 hover:bg-slate-950 hover:text-slate-50 transition-all duration-300"
+              className="min-h-9 text-center px-4 py-2 text-slate-950 font-black bg-slate-100 hover:bg-slate-950 hover:text-slate-50 transition-all duration-300"
               onClick={handleLoadMore}
             >
               I Want More...

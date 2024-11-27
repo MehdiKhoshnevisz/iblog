@@ -34,10 +34,10 @@ const Post = (props: {
             width={320}
             height={208}
             alt={title}
-            className="rounded-xl bg-slate-100 w-full h-52 lg:w-auto object-cover brightness-[0.3] group-hover:brightness-50  transition-all"
+            className="bg-slate-100 w-full h-52 lg:w-auto object-cover brightness-[0.3] group-hover:brightness-50  transition-all"
           />
         ) : (
-          <div className="w-full h-[208px] rounded-xl bg-slate-100 animate-opacity"></div>
+          <div className="w-full h-[208px]  bg-slate-100 animate-opacity"></div>
         )}
 
         {isSkeleton ? (

@@ -51,7 +51,7 @@ const Biography = () => {
             </motion.span>
           ))}
         </motion.h1>
-        <p className="text-center mx-auto mt-8 text-lg md:text-xl text-slate-600 leading-loose md:leading-snug">
+        <p className="text-center mx-auto mt-8 md:text-xl text-slate-600 leading-loose md:leading-snug">
           Hey, I’m <span className="font-black">Mehdi</span>-a front-end
           developer who loves creating interactive, visually stunning web
           experiences. From smooth animations to clean, functional designs, I’m
