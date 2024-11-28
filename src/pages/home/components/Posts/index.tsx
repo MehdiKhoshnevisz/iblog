@@ -82,6 +82,7 @@ const Posts = () => {
               className="col-span-12 sm:col-span-6 lg:col-span-4 mb-4 sm:mb-0"
             >
               <Post
+                key={+new Date()}
                 id={post.id}
                 href={`/post/${post.id}`}
                 image={post?.customSeoDetail?.thumbnail?.url}

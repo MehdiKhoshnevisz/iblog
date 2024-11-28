@@ -39,11 +39,6 @@ export default function PostPage() {
   );
 
   const post = data?.post || null;
-  const isLiked = useMemo(() => !!data?.post?.reactionsCount, [data]);
-
-  const { hasReaction, onReaction } = useReaction({
-    hasReactionBefore: isLiked,
-  });
 
   const postContent = useMemo(() => {
     const content = post?.fields?.find(
@@ -57,6 +52,10 @@ export default function PostPage() {
 
     return cleanedContent;
   }, [post]);
+
+  const { hasReaction, onReaction } = useReaction({
+    hasReactionBefore: !!post?.reactionsCount,
+  });
 
   useEffect(() => {
     refetch();
@@ -97,6 +96,7 @@ export default function PostPage() {
               {hasReaction ? "I like it" : "Do you like it?"}
             </span>
             <Like
+              key={+new Date()}
               withBg={false}
               isFill={hasReaction}
               onClick={(e) => onReaction(e, post?.id)}
