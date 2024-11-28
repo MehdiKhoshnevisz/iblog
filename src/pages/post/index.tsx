@@ -1,5 +1,6 @@
 import moment from "moment";
 import { useEffect, useMemo } from "react";
+import { useLocation } from "react-router";
 import { motion } from "motion/react";
 import parse from "html-react-parser";
 import { useParams } from "react-router";
@@ -15,10 +16,9 @@ import type {
 import Like from "@/components/Like";
 import Container from "@/components/Container";
 import useReaction from "@/hooks/use-reaction";
+import TryAgain from "@/components/TryAgain";
 
 import "./post.css";
-import TryAgain from "@/components/TryAgain";
-import { useLocation } from "react-router";
 
 export default function PostPage() {
   const { id } = useParams();
@@ -44,12 +44,10 @@ export default function PostPage() {
     const content = post?.fields?.find(
       (item: PostField) => item.key === "content"
     );
-    const sanitizedContent = content?.value?.trim()?.replace(/\\/g, "");
-    const cleanedContent =
-      sanitizedContent?.startsWith('"') && sanitizedContent?.endsWith('"')
-        ? sanitizedContent?.slice(1, -1)
-        : sanitizedContent;
 
+    // remove extra space and chars from beginning of the content string
+    const sanitizedContent = content?.value?.trim()?.replace(/\\/g, "");
+    const cleanedContent = sanitizedContent?.replace(/^"(.+)"$/, "$1");
     return cleanedContent;
   }, [post]);
 
