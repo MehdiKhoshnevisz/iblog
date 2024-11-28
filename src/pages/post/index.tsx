@@ -1,5 +1,5 @@
 import moment from "moment";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { motion } from "motion/react";
 import parse from "html-react-parser";
 import { useParams } from "react-router";
@@ -18,9 +18,11 @@ import useReaction from "@/hooks/use-reaction";
 
 import "./post.css";
 import TryAgain from "@/components/TryAgain";
+import { useLocation } from "react-router";
 
 export default function PostPage() {
   const { id } = useParams();
+  const { pathname } = useLocation();
 
   const { data, loading, refetch } = useQuery<
     GetPostResponse,
@@ -55,6 +57,10 @@ export default function PostPage() {
 
     return cleanedContent;
   }, [post]);
+
+  useEffect(() => {
+    refetch();
+  }, [pathname]);
 
   if (loading) return <div className="min-h-screen"></div>;
 

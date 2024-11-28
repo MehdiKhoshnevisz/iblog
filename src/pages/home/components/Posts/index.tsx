@@ -14,8 +14,12 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 
 import spinner from "@/assets/icons/spinner.svg";
+import { useLocation } from "react-router";
+import { useEffect } from "react";
 
 const Posts = () => {
+  const { pathname } = useLocation();
+
   const variables = {
     limit: 6,
     offset: 0,
@@ -29,6 +33,7 @@ const Posts = () => {
     fetchMore,
     loading: isLoading,
     networkStatus,
+    refetch,
   } = useQuery<GetPostsResponse, GetPostsVariables>(
     gql`
       ${getPostsQuery}
@@ -54,6 +59,10 @@ const Posts = () => {
   const posts = data?.posts?.nodes || [];
   const postsHasNextPage = data?.posts?.pageInfo?.hasNextPage;
   const isInitialLoading = networkStatus === NetworkStatus.loading;
+
+  useEffect(() => {
+    refetch();
+  }, [pathname]);
 
   return (
     <Container>

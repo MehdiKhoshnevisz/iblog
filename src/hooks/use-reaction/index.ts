@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, useApolloClient } from "@apollo/client";
 
 import type {
   RemoveReactionResponse,
@@ -8,6 +8,8 @@ import type {
 import { REACTION, STATUS_RESPONSE } from "@/types/enums";
 import addReactionMutation from "@/graphql/mutations/add-reaction/index.gql";
 import removeReactionMutation from "@/graphql/mutations/remove-reaction/index.gql";
+import getPostQuery from "@/graphql/queries/get-post/index.gql";
+import getPostsQuery from "@/graphql/queries/get-posts/index.gql";
 
 interface useReactionProps {
   hasReactionBefore: boolean;
@@ -15,6 +17,7 @@ interface useReactionProps {
 
 const useReaction = (props: useReactionProps) => {
   const { hasReactionBefore } = props;
+  const client = useApolloClient();
   const [hasReaction, setHasReaction] = useState(hasReactionBefore);
 
   const [
@@ -36,6 +39,12 @@ const useReaction = (props: useReactionProps) => {
   ] = useMutation<RemoveReactionResponse, RemoveReactionVariables>(
     removeReactionMutation
   );
+
+  const updateQueries = () => {
+    client.refetchQueries({
+      include: [getPostQuery, getPostsQuery],
+    });
+  };
 
   const onReaction = (e: React.MouseEvent<EventTarget>, id: string) => {
     e.preventDefault();
@@ -62,6 +71,7 @@ const useReaction = (props: useReactionProps) => {
 
       if (response.data?.removeReaction?.status === STATUS_RESPONSE.SUCCESS) {
         setHasReaction(true);
+        updateQueries();
       }
     } catch (err) {
       setHasReaction(false);
@@ -82,6 +92,7 @@ const useReaction = (props: useReactionProps) => {
 
       if (response.data?.removeReaction.status === STATUS_RESPONSE.SUCCESS) {
         setHasReaction(false);
+        updateQueries();
       }
     } catch (err) {
       console.error("Error removing reaction:", err);
